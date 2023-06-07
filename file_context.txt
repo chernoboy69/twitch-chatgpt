@@ -1,6 +1,5 @@
 # Importe as bibliotecas necessárias
 from twitchio.ext import commands
-import requests
 
 # Defina as informações do bot e do streamer
 bot_name = "diaba"
@@ -28,37 +27,6 @@ async def sexy_length(ctx):
 @bot.command(name="naughtyjoke")
 async def naughty_joke(ctx):
     await ctx.send("Tenho uma piada bem safada para você: Qual é o segredo para transar loucamente? Ah, vem comigo e eu te mostro... *wink*")
-
-# Comando para interagir com um membro específico
-@bot.command(name="seduzir")
-async def seduzir_membro(ctx, member: commands.MemberConverter):
-    await ctx.send(f"Olá, {member.name}! Está preparado(a) para uma experiência sensual e inesquecível? Venha comigo e descubra o verdadeiro prazer... *risadinhas provocantes*")
-
-# Comando para obter tempo de acompanhamento
-@bot.command(name="tempoacompanhamento")
-async def tempo_acompanhamento(ctx, member: commands.MemberConverter):
-    user_id = member.id
-    headers = {
-        'Client-ID': 'vl1qzirjij2jau5g9txnwt5bnqcqdp',
-        'Authorization': 'tlhfh66od4e3ze5qavzyh9l60lwiy4'
-    }
-    response = requests.get(f'https://api.twitch.tv/helix/users/follows?from_id={user_id}', headers=headers)
-    data = response.json()
-    tempo = data['data'][0]['followed_at']
-    await ctx.send(f'{member.name} te segue desde: {tempo}')
-
-# Comando para obter pontos do usuário
-@bot.command(name="pontos")
-async def pontos(ctx, member: commands.MemberConverter):
-    user_id = member.id
-    headers = {
-        'Client-ID': 'vl1qzirjij2jau5g9txnwt5bnqcqdp',
-        'Authorization': 'tlhfh66od4e3ze5qavzyh9l60lwiy4'
-    }
-    response = requests.get(f'https://api.twitch.tv/helix/channel_points/custom_rewards?broadcaster_id={user_id}', headers=headers)
-    data = response.json()
-    pontos = data['data'][0]['default_reward']['cost']
-    await ctx.send(f'{member.name} tem {pontos} pontos!')
 
 # Implemente mais comandos e respostas bem ousadas de acordo com suas preferências
 
