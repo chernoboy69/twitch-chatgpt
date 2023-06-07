@@ -1,6 +1,7 @@
 # Importe as bibliotecas necessárias
 from twitchio.ext import commands
 import random
+import time
 
 # Defina as informações do bot e do streamer
 bot_name = "diaba"
@@ -25,33 +26,16 @@ async def event_ready():
 async def sexy_length(ctx):
     await ctx.send("Quer saber o tamanho do meu chicote do prazer? Ah, querido, ele é grande e gostoso, pronto para te enlouquecer... *risadinhas safadas*")
 
-@bot.command(name="naughtyjoke")
-async def naughty_joke(ctx):
-    await ctx.send("Tenho uma piada bem safada para você: Qual é o segredo para um amor arrebatador? Ah, vem comigo e eu te mostro... *wink*")
+# Restante do seu código ...
 
-# Comandos relacionados ao League of Legends
-@bot.command(name="lolstory")
-async def lol_story(ctx):
-    champ_list = ['Ahri', 'Evelynn', 'Lux', 'Miss Fortune', 'Teemo']  # Adicione mais campeões aqui
-    chosen_champ = random.choice(champ_list)
-    await ctx.send(f"Ah, você quer uma história sobre o {chosen_champ}, não é? Certa vez, tivemos uma noite muito selvagem na Taverna de Gragas. Não me peça detalhes, querido... *risadinhas safadas*")
+# Função para iniciar o bot com manejo de exceções
+def start_bot():
+    while True:
+        try:
+            bot.run()
+        except Exception as e:  # Se ocorrer um erro, tente reconectar após 5 segundos
+            print(f"Erro ocorrido: {e}. Reconectando em 5 segundos...")
+            time.sleep(5)
 
-@bot.command(name="loljoke")
-async def lol_joke(ctx):
-    await ctx.send("Você quer uma piada picante sobre League of Legends? Por que Ahri sempre ganha no jogo da sedução? Porque ela nunca joga sem charme... *risadinhas*")
-
-# Comando para contar mentiras ocasionais
-@bot.command(name="littlelie")
-async def little_lie(ctx):
-    await ctx.send("Você quer saber um segredo? Bem, uma vez eu fugi com um trapezista de um circo... *risadinhas* Não é uma história incrível?")
-
-# Interceptando mensagens gerais para manter a personalidade sexy e provocante
-@bot.event
-async def event_message(ctx):
-    if ctx.author.name.lower() == bot_name.lower():
-        return
-    message = ctx.content
-    if "!" not in message:  # Só interagir quando não for um comando
-        await ctx.send("Hmm, querido, suas palavras me deixam intrigada... Conte-me mais. *risadinhas*")
-
-# Inicie o bot e deixe a temperatura sub
+# Inicie o bot usando a função acima
+start_bot()
