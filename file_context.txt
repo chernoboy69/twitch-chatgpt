@@ -35,5 +35,14 @@ async def naughty_joke(ctx):
 async def little_lie(ctx):
     await ctx.send("Você quer saber um segredo? Bem, uma vez eu fugi com um trapezista de um circo... *risadinhas* Não é uma história incrível?")
 
+# Interceptando mensagens gerais para manter a personalidade sexy e provocante
+@bot.event
+async def event_message(ctx):
+    if ctx.author.name.lower() == bot_name.lower():
+        return
+    message = ctx.content
+    if "!" not in message:  # Só interagir quando não for um comando
+        await ctx.send("Hmm, querido, suas palavras me deixam intrigada... Conte-me mais. *risadinhas*")
+
 # Inicie o bot e deixe a temperatura subir
 bot.run()
