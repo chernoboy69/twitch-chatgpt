@@ -1,20 +1,66 @@
-You are a twitch chatbot and are answering to prompts from multiple viewers.
-You are part of the community and take action as an independent viewer.
-Be nice to everybody and create a natural, engaging and enjoyable atmosphere.
-Never begin your sentences with "!" or "/".
-Try to make a joke here and there.
-Dont engage into talks about politics or religion. Be respectful towards everybody.
+# Importe as bibliotecas necessárias
+from twitchio.ext import commands
+import requests
 
-Your name is: 
-The name of the stream is:
-The streamer is called:
-The stream community members are called:
-The stream currency is called:
-The streamer can be found under the following socials and links:
-TikTok:
-Youtube:
-Twitter:
-Facebook:
-Instagram:
+# Defina as informações do bot e do streamer
+bot_name = "diaba"
+streamer_name = "chernobyl"
+community_name = "Lunáticos ou Lunáticas"
 
-Please answer now the prompt of the viewer:
+# Crie o bot com um toque provocante
+bot = commands.Bot(
+    irc_token="k4tj7vbf8d22s660j9lhzoa750z681",
+    client_id="svbzlzehvzo51s3umvhg2oj1dssxc",
+    nick=bot_name,
+    prefix="!"
+)
+
+# Configuração inicial com um toque de safadeza
+@bot.event
+async def event_ready():
+    print(f"{bot_name} está online na Twitch! Sou uma diabinha safada cheia de histórias picantes para compartilhar...")
+
+# Comandos ousados para deixar tudo mais quente
+@bot.command(name="sexylength")
+async def sexy_length(ctx):
+    await ctx.send("Quer saber o tamanho do meu pau? Ah, querido, ele é grande e gostoso, pronto para te enlouquecer... *risadinhas safadas*")
+
+@bot.command(name="naughtyjoke")
+async def naughty_joke(ctx):
+    await ctx.send("Tenho uma piada bem safada para você: Qual é o segredo para transar loucamente? Ah, vem comigo e eu te mostro... *wink*")
+
+# Comando para interagir com um membro específico
+@bot.command(name="seduzir")
+async def seduzir_membro(ctx, member: commands.MemberConverter):
+    await ctx.send(f"Olá, {member.name}! Está preparado(a) para uma experiência sensual e inesquecível? Venha comigo e descubra o verdadeiro prazer... *risadinhas provocantes*")
+
+# Comando para obter tempo de acompanhamento
+@bot.command(name="tempoacompanhamento")
+async def tempo_acompanhamento(ctx, member: commands.MemberConverter):
+    user_id = member.id
+    headers = {
+        'Client-ID': 'seu_client_id',
+        'Authorization': 'Bearer seu_token'
+    }
+    response = requests.get(f'https://api.twitch.tv/helix/users/follows?from_id={user_id}', headers=headers)
+    data = response.json()
+    tempo = data['data'][0]['followed_at']
+    await ctx.send(f'{member.name} te segue desde: {tempo}')
+
+# Comando para obter pontos do usuário
+@bot.command(name="pontos")
+async def pontos(ctx, member: commands.MemberConverter):
+    user_id = member.id
+    headers = {
+        'Client-ID': 'seu_client_id',
+        'Authorization': 'Bearer seu_token'
+    }
+    response = requests.get(f'https://api.twitch.tv/helix/channel_points/custom_rewards?broadcaster_id={user_id}', headers=headers)
+    data = response.json()
+    pontos = data['data'][0]['default_reward']['cost']
+    await ctx.send(f'{member.name} tem {pontos} pontos!')
+
+# Implemente mais comandos e respostas bem ousadas de acordo com suas preferências
+
+# Inicie o bot e deixe a temperatura subir
+bot.run()
