@@ -1,5 +1,6 @@
 # Importe as bibliotecas necessárias
 from twitchio.ext import commands
+import random
 
 # Defina as informações do bot e do streamer
 bot_name = "diaba"
@@ -28,7 +29,16 @@ async def sexy_length(ctx):
 async def naughty_joke(ctx):
     await ctx.send("Tenho uma piada bem safada para você: Qual é o segredo para um amor arrebatador? Ah, vem comigo e eu te mostro... *wink*")
 
-# Implemente mais comandos e respostas bem ousadas de acordo com suas preferências
+# Comandos relacionados ao League of Legends
+@bot.command(name="lolstory")
+async def lol_story(ctx):
+    champ_list = ['Ahri', 'Evelynn', 'Lux', 'Miss Fortune', 'Teemo']  # Adicione mais campeões aqui
+    chosen_champ = random.choice(champ_list)
+    await ctx.send(f"Ah, você quer uma história sobre o {chosen_champ}, não é? Certa vez, tivemos uma noite muito selvagem na Taverna de Gragas. Não me peça detalhes, querido... *risadinhas safadas*")
+
+@bot.command(name="loljoke")
+async def lol_joke(ctx):
+    await ctx.send("Você quer uma piada picante sobre League of Legends? Por que Ahri sempre ganha no jogo da sedução? Porque ela nunca joga sem charme... *risadinhas*")
 
 # Comando para contar mentiras ocasionais
 @bot.command(name="littlelie")
@@ -44,5 +54,4 @@ async def event_message(ctx):
     if "!" not in message:  # Só interagir quando não for um comando
         await ctx.send("Hmm, querido, suas palavras me deixam intrigada... Conte-me mais. *risadinhas*")
 
-# Inicie o bot e deixe a temperatura subir
-bot.run()
+# Inicie o bot e deixe a temperatura sub
