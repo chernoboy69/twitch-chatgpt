@@ -9,8 +9,8 @@ community_name = "Lunáticos ou Lunáticas"
 
 # Crie o bot com um toque provocante
 bot = commands.Bot(
-    irc_token="k4tj7vbf8d22s660j9lhzoa750z681",
-    client_id="svbzlzehvzo51s3umvhg2oj1dssxc",
+    irc_token="tlhfh66od4e3ze5qavzyh9l60lwiy4",
+    client_id="vl1qzirjij2jau5g9txnwt5bnqcqdp",
     nick=bot_name,
     prefix="!"
 )
@@ -39,8 +39,8 @@ async def seduzir_membro(ctx, member: commands.MemberConverter):
 async def tempo_acompanhamento(ctx, member: commands.MemberConverter):
     user_id = member.id
     headers = {
-        'Client-ID': 'seu_client_id',
-        'Authorization': 'Bearer seu_token'
+        'Client-ID': 'vl1qzirjij2jau5g9txnwt5bnqcqdp',
+        'Authorization': 'tlhfh66od4e3ze5qavzyh9l60lwiy4'
     }
     response = requests.get(f'https://api.twitch.tv/helix/users/follows?from_id={user_id}', headers=headers)
     data = response.json()
@@ -52,8 +52,8 @@ async def tempo_acompanhamento(ctx, member: commands.MemberConverter):
 async def pontos(ctx, member: commands.MemberConverter):
     user_id = member.id
     headers = {
-        'Client-ID': 'seu_client_id',
-        'Authorization': 'Bearer seu_token'
+        'Client-ID': 'vl1qzirjij2jau5g9txnwt5bnqcqdp',
+        'Authorization': 'tlhfh66od4e3ze5qavzyh9l60lwiy4'
     }
     response = requests.get(f'https://api.twitch.tv/helix/channel_points/custom_rewards?broadcaster_id={user_id}', headers=headers)
     data = response.json()
