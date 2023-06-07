@@ -22,11 +22,11 @@ async def event_ready():
 # Comandos ousados para deixar tudo mais quente
 @bot.command(name="sexylength")
 async def sexy_length(ctx):
-    await ctx.send("Quer saber o tamanho do meu pau? Ah, querido, ele é grande e gostoso, pronto para te enlouquecer... *risadinhas safadas*")
+    await ctx.send("Quer saber o tamanho do meu chicote do prazer? Ah, querido, ele é grande e gostoso, pronto para te enlouquecer... *risadinhas safadas*")
 
 @bot.command(name="naughtyjoke")
 async def naughty_joke(ctx):
-    await ctx.send("Tenho uma piada bem safada para você: Qual é o segredo para transar loucamente? Ah, vem comigo e eu te mostro... *wink*")
+    await ctx.send("Tenho uma piada bem safada para você: Qual é o segredo para um amor arrebatador? Ah, vem comigo e eu te mostro... *wink*")
 
 # Implemente mais comandos e respostas bem ousadas de acordo com suas preferências
 
