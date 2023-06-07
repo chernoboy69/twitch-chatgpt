@@ -30,5 +30,10 @@ async def naughty_joke(ctx):
 
 # Implemente mais comandos e respostas bem ousadas de acordo com suas preferências
 
+# Comando para contar mentiras ocasionais
+@bot.command(name="littlelie")
+async def little_lie(ctx):
+    await ctx.send("Você quer saber um segredo? Bem, uma vez eu fugi com um trapezista de um circo... *risadinhas* Não é uma história incrível?")
+
 # Inicie o bot e deixe a temperatura subir
 bot.run()
