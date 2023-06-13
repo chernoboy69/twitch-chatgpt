@@ -1,7 +1,5 @@
-# Importe as bibliotecas necessárias
-from twitchio.ext import commands
-from datetime import datetime
 import requests
+from datetime import datetime
 
 # Defina as informações do bot e do streamer
 bot_name = "diaba"
@@ -9,14 +7,38 @@ streamer_name = "chernobyl"
 community_name = "Lunáticos ou Lunáticas"
 
 # Variáveis para armazenar o número total de repetições
-total_1f = 0
-total_1ag = 0
-total_1ab = 0
-total_1o = 0
-total_1p = 0
-total_1al = 0
-total_1c = 0
-total_1b = 0
+total_flexoes = 0
+total_abdominais = 0
+total_agachamentos = 0
+
+# Função para buscar notícias
+def buscar_noticias():
+    url = "https://newsapi.org/v2/top-headlines"
+    params = {
+        "country": "br",
+        "apiKey": "d72e2a1f696a4bb0a1f10b6625d2575e" # Substitua pela sua API Key do News API
+    }
+
+    response = requests.get(url, params=params)
+    data = response.json()
+
+    if data["status"] == "ok":
+        articles = data["articles"]
+        for article in articles:
+            title = article["title"]
+            description = article["description"]
+            source = article["source"]["name"]
+            published_at = article["publishedAt"]
+
+            print(f"Fonte: {source}")
+            print(f"Título: {title}")
+            print(f"Descrição: {description}")
+            print(f"Publicado em: {published_at}")
+            print("---")
+
+# Função para obter a data atual
+def obter_data_atual():
+    return datetime.now().strftime("%d/%m/%Y")
 
 # Crie o bot com um toque provocante
 bot = commands.Bot(
@@ -45,94 +67,18 @@ async def naughty_joke(ctx):
 async def little_lie(ctx):
     await ctx.send("Você quer saber um segredo? Bem, uma vez eu fugi com um trapezista de um circo... *risadinhas* Não é uma história incrível?")
 
-# Comando para registrar a realização de 10 flexões
-@bot.command(name="1F")
-async def fazer_1f(ctx):
-    global total_1f
-    total_1f += 10
-    await ctx.send(f"{ctx.author.name}, você fez 10 flexões! O total agora é de {total_1f} flexões.")
-
-# Comando para registrar a realização de 10 agachamentos
-@bot.command(name="1AG")
-async def fazer_1ag(ctx):
-    global total_1ag
-    total_1ag += 10
-    await ctx.send(f"{ctx.author.name}, você fez 10 agachamentos! O total agora é de {total_1ag} agachamentos.")
-
-# Comando para registrar a realização de 10 abdominais
-@bot.command(name="1AB")
-async def fazer_1ab(ctx):
-    global total_1ab
-    total_1ab += 10
-    await ctx.send(f"{ctx.author.name}, você fez 10 abdominais! O total agora é de {total_1ab} abdominais.")
-
-# Comando para registrar o consumo de 1 ovo cru
-@bot.command(name="1O")
-async def comer_1o(ctx):
-    global total_1o
-    total_1o += 1
-    await ctx.send(f"{ctx.author.name}, você comeu 1 ovo cru! O total agora é de {total_1o} ovos.")
-
-# Comando para registrar o consumo de 1 pimenta
-@bot.command(name="1P")
-async def comer_1p(ctx):
-    global total_1p
-    total_1p += 1
-    await ctx.send(f"{ctx.author.name}, você comeu 1 pimenta! O total agora é de {total_1p} pimentas.")
-
-# Comando para registrar o consumo de 1 dente de alho
-@bot.command(name="1AL")
-async def comer_1al(ctx):
-    global total_1al
-    total_1al += 1
-    await ctx.send(f"{ctx.author.name}, você comeu 1 dente de alho! O total agora é de {total_1al} dentes de alho.")
-
-# Comando para registrar a quebra de 1 coco
-@bot.command(name="1C")
-async def quebrar_1c(ctx):
-    global total_1c
-    total_1c += 1
-    await ctx.send(f"{ctx.author.name}, você quebrou 1 coco! O total agora é de {total_1c} cocos quebrados.")
-
-# Comando para registrar o banho de água com gelo
-@bot.command(name="1B")
-async def tomar_1b(ctx):
-    global total_1b
-    total_1b += 1
-    await ctx.send(f"{ctx.author.name}, você tomou 1 banho de água com gelo! O total agora é de {total_1b} banhos gelados.")
-
-# Comando para verificar a data e hora atuais
-@bot.command(name="datahora")
-async def data_hora(ctx):
-    now = datetime.now()
-    current_date = now.strftime("%d/%m/%Y")
-    current_time = now.strftime("%H:%M:%S")
-    await ctx.send(f"Data atual: {current_date}\nHora atual: {current_time}")
-
-# Comando para obter notícias atualizadas
+# Comando para buscar notícias
 @bot.command(name="noticias")
-async def obter_noticias(ctx):
-    url = "https://newsapi.org/v2/top-headlines"
-    params = {
-        "country": "br",
-        "apiKey": "d72e2a1f696a4bb0a1f10b6625d2575e"  # Substitua pela sua API Key do News API
-    }
-
-    response = requests.get(url, params=params)
-    data = response.json()
-
-    if data["status"] == "ok":
-        articles = data["articles"]
-        news_list = "\n\n".join([f"{index + 1}. {article['title']}\n{article['url']}" for index, article in enumerate(articles)])
-        await ctx.send(f"Notícias:\n{news_list}")
-    else:
-        await ctx.send("Desculpe, não foi possível obter as notícias no momento.")
+async def noticias(ctx):
+    await ctx.send("Vamos ver as notícias...")
+    buscar_noticias()
 
 # Interceptando mensagens gerais para manter a personalidade sexy e provocante
 @bot.event
 async def event_message(ctx):
     if ctx.author.name.lower() == bot_name.lower():
         return
+
     message = ctx.content
     if "!" not in message:  # Só interagir quando não for um comando
         await ctx.send("Hmm, querido, suas palavras me deixam intrigada... Conte-me mais. *risadinhas*")
