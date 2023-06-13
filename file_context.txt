@@ -48,56 +48,56 @@ async def little_lie(ctx):
 async def fazer_1f(ctx):
     global total_1f
     total_1f += 10
-    await ctx.send(f"{ctx.author.name}, você fez 10 flexões! O total agora é de {total_1f} flexões.")
+    await ctx.send(f"Diaba: Muito bem, {ctx.author.name}! Você fez 10 flexões! O total agora é de {total_1f} flexões. *risadinhas*")
 
 # Comando para registrar a realização de 10 agachamentos
 @bot.command(name="1AG")
 async def fazer_1ag(ctx):
     global total_1ag
     total_1ag += 10
-    await ctx.send(f"{ctx.author.name}, você fez 10 agachamentos! O total agora é de {total_1ag} agachamentos.")
+    await ctx.send(f"Diaba: Muito bem, {ctx.author.name}! Você fez 10 agachamentos! O total agora é de {total_1ag} agachamentos. *risadinhas*")
 
 # Comando para registrar a realização de 10 abdominais
 @bot.command(name="1AB")
 async def fazer_1ab(ctx):
     global total_1ab
     total_1ab += 10
-    await ctx.send(f"{ctx.author.name}, você fez 10 abdominais! O total agora é de {total_1ab} abdominais.")
+    await ctx.send(f"Diaba: Muito bem, {ctx.author.name}! Você fez 10 abdominais! O total agora é de {total_1ab} abdominais. *risadinhas*")
 
 # Comando para registrar o consumo de 1 ovo cru
 @bot.command(name="1O")
 async def comer_1o(ctx):
     global total_1o
     total_1o += 1
-    await ctx.send(f"{ctx.author.name}, você comeu 1 ovo cru! O total agora é de {total_1o} ovos.")
+    await ctx.send(f"Diaba: Muito bem, {ctx.author.name}! Você comeu 1 ovo cru! O total agora é de {total_1o} ovos. *risadinhas*")
 
 # Comando para registrar o consumo de 1 pimenta
 @bot.command(name="1P")
 async def comer_1p(ctx):
     global total_1p
     total_1p += 1
-    await ctx.send(f"{ctx.author.name}, você comeu 1 pimenta! O total agora é de {total_1p} pimentas.")
+    await ctx.send(f"Diaba: Muito bem, {ctx.author.name}! Você comeu 1 pimenta! O total agora é de {total_1p} pimentas. *risadinhas*")
 
 # Comando para registrar o consumo de 1 dente de alho
 @bot.command(name="1AL")
 async def comer_1al(ctx):
     global total_1al
     total_1al += 1
-    await ctx.send(f"{ctx.author.name}, você comeu 1 dente de alho! O total agora é de {total_1al} dentes de alho.")
+    await ctx.send(f"Diaba: Muito bem, {ctx.author.name}! Você comeu 1 dente de alho! O total agora é de {total_1al} dentes de alho. *risadinhas*")
 
 # Comando para registrar a quebra de 1 coco
 @bot.command(name="1C")
 async def quebrar_1c(ctx):
     global total_1c
     total_1c += 1
-    await ctx.send(f"{ctx.author.name}, você quebrou 1 coco! O total agora é de {total_1c} cocos quebrados.")
+    await ctx.send(f"Diaba: Muito bem, {ctx.author.name}! Você quebrou 1 coco! O total agora é de {total_1c} cocos quebrados. *risadinhas*")
 
 # Comando para registrar o banho de água com gelo
 @bot.command(name="1B")
 async def tomar_1b(ctx):
     global total_1b
     total_1b += 1
-    await ctx.send(f"{ctx.author.name}, você tomou 1 banho de água com gelo! O total agora é de {total_1b} banhos gelados.")
+    await ctx.send(f"Diaba: Muito bem, {ctx.author.name}! Você tomou 1 banho de água com gelo! O total agora é de {total_1b} banhos gelados. *risadinhas*")
 
 # Interceptando mensagens gerais para manter a personalidade sexy e provocante
 @bot.event
@@ -106,7 +106,7 @@ async def event_message(ctx):
         return
     message = ctx.content
     if "!" not in message:  # Só interagir quando não for um comando
-        await ctx.send("Hmm, querido, suas palavras me deixam intrigada... Conte-me mais. *risadinhas*")
+        await ctx.send("Diaba: Hmm, querido, suas palavras me deixam intrigada... Conte-me mais. *risadinhas*")
 
     await bot.handle_commands(ctx)
 
