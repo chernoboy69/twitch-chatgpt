@@ -64,13 +64,12 @@ async def fazer_1ab(ctx):
     total_1ab += 10
     await ctx.send(f"Diaba: Muito bem, {ctx.author.name}! Você fez 10 abdominais! O total agora é de {total_1ab} abdominais. *risadinhas*")
 
-# Comando para adicionar 10 flexões, 10 abdominais e 10 agachamentos de uma só vez
 @bot.command(name="1T")
 async def fazer_1t(ctx):
     global total_1f, total_1ag, total_1ab
-    total_1f += 10
-    total_1ag += 10
-    total_1ab += 10
+    total_1f += total_10f
+    total_1ag += total_10ag
+    total_1ab += total_10ab
     await ctx.send(f"{ctx.author.name}, você fez 10 flexões, 10 abdominais e 10 agachamentos! O total agora é de {total_1f} flexões, {total_1ab} abdominais e {total_1ag} agachamentos.")
 
 # Comando para registrar o consumo de 1 ovo cru
