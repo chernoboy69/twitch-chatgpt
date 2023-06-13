@@ -33,28 +33,46 @@ async def sexy_length(ctx):
 async def naughty_joke(ctx):
     await ctx.send("Tenho uma piada bem safada para você: Qual é o segredo para um amor arrebatador? Ah, vem comigo e eu te mostro... *wink*")
 
-# Implemente mais comandos e respostas bem ousadas de acordo com suas preferências
+# Comando para contar mentiras ocasionais
+@bot.command(name="littlelie")
+async def little_lie(ctx):
+    await ctx.send("Você quer saber um segredo? Bem, uma vez eu fugi com um trapezista de um circo... *risadinhas* Não é uma história incrível?")
 
-# Comando para contar as repetições de flexões
+# Comando para registrar a realização de flexões
 @bot.command(name="FAÇA 10 FLEXÕES!")
 async def fazer_flexoes(ctx):
     global total_flexoes
     total_flexoes += 10
     await ctx.send(f"{ctx.author.name}, você fez 10 flexões! O total agora é de {total_flexoes} flexões.")
 
-# Comando para contar as repetições de abdominais
+# Comando para registrar a realização de abdominais
 @bot.command(name="FAÇA 10 ABDOMINAIS!")
 async def fazer_abdominais(ctx):
     global total_abdominais
     total_abdominais += 10
     await ctx.send(f"{ctx.author.name}, você fez 10 abdominais! O total agora é de {total_abdominais} abdominais.")
 
-# Comando para contar as repetições de agachamentos
+# Comando para registrar a realização de agachamentos
 @bot.command(name="FAÇA 10 AGACHAMENTOS!")
 async def fazer_agachamentos(ctx):
     global total_agachamentos
     total_agachamentos += 10
     await ctx.send(f"{ctx.author.name}, você fez 10 agachamentos! O total agora é de {total_agachamentos} agachamentos.")
+
+# Comando para realizar a recompensa "TREINE MAIS!"
+@bot.command(name="TREINE MAIS!")
+async def treine_mais(ctx):
+    global total_flexoes, total_abdominais, total_agachamentos
+    total_flexoes += 10
+    total_abdominais += 10
+    total_agachamentos += 10
+    await ctx.send(f"{ctx.author.name}, você realizou o TREINE MAIS! Fez 10 flexões, 10 abdominais e 10 agachamentos.")
+
+# Comando para verificar o número total de repetições de cada exercício
+@bot.command(name="totalrepetições")
+async def total_repeticoes(ctx):
+    global total_flexoes, total_abdominais, total_agachamentos
+    await ctx.send(f"Total de repetições:\nFlexões: {total_flexoes}\nAbdominais: {total_abdominais}\nAgachamentos: {total_agachamentos}")
 
 # Interceptando mensagens gerais para manter a personalidade sexy e provocante
 @bot.event
